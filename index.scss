@@ -1,0 +1,125 @@
+// Tooltip
+// 
+// Tips can be created using the JS component 'Tip'
+// or they can be placed static in the page. If they are
+// created with JS the position is handled via JS. If you
+// just want a static tooltip in the markup, as the class .is-static
+//
+// Position the tips caret by giving it one of these classes:
+// 
+// * south
+// * east
+// * north
+// * west
+// * south-west
+// * south-east
+// * north-east
+// * north-west
+//
+// If a tip is static these classes will also position to the tooltip
+
+.tip {
+  $caret-width: 16px;
+  $caret-height: 8px;
+  $background: #333;
+
+  -webkit-transition: opacity, margin, -webkit-transform;
+  -moz-transition: opacity, margin, -moz-transform;
+  transition: opacity, margin, transform;
+
+  @include transition-duration(0.2s);
+  @include transition-timing-function(ease-in-out());
+  @include improve-text-rendering;
+  @include border-box;
+
+  position: absolute;
+  z-index: 10000;
+
+  color: #fff;
+  font-weight: bold;
+  font-size: 11px;
+  line-height: 15px;
+  background: $background;
+  border-radius: 3px;
+  padding: spacing(1.5) spacing(1.5);
+
+  .csstransitions & {
+    opacity: 0;
+    margin: 0;
+    &.is-visible {
+      opacity: 1;
+    }
+  }
+  
+  .no-csstransitions & {
+    display: none;
+    &.is-visible {
+      display: block;
+    }
+  }
+
+  &:after {
+    @include show-pseudo-element;
+    position: absolute;
+  }
+
+  &.south {
+    &.is-visible {
+      margin-top: $caret-height;
+    }
+    &:after {
+      @include triangle('top', $caret-width, $caret-height, $background);
+      top: $caret-height * -1;
+      left: 50%;
+      margin-left: $caret-height * -0.5;
+    }
+  }
+
+  &.north.east {
+    margin-top: $caret-width * -1;
+    &:after {
+      @include triangle('left', $caret-height, $caret-width, $background);
+      left: -12px;
+      top: 10px + ($caret-width);
+    }
+  }
+
+  &.north {
+    &.is-visible {
+      margin-bottom: $caret-height;
+    }
+    &:after {
+      @include triangle('bottom', $caret-width, $caret-height, $background);
+      bottom: $caret-height * -1;
+      left: 50%;
+      margin-left: $caret-height * 0.5;
+    }    
+  }
+
+  &.east {
+    margin-left: $caret-height * 2;
+
+    &.is-visible {
+      margin-left: $caret-height;
+    }
+
+    &:after {
+      @include triangle('left', $caret-height, $caret-width, $background);
+      left: $caret-height * -1;
+      top: 50%;
+      margin-top: $caret-width * -0.5;
+    }
+  }
+
+  &.west {
+    &.is-visible {
+      margin-right: $caret-width;
+    }
+    &:after {
+      @include triangle('right', $caret-height, $caret-width, $background);
+      right: $caret-height * -1;
+      top: 50%;
+      margin-top: $caret-width * -0.5;
+    }
+  }
+}
