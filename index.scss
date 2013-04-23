@@ -76,23 +76,28 @@
   }
 
   &.north.east {
-    margin-top: $caret-width * -1;
+    margin-top: $caret-height * -1;
+    &.is-visible {
+      margin-top: $caret-height * -1;
+    }
     &:after {
       @include triangle('left', $caret-height, $caret-width, $background);
-      left: -12px;
-      top: 10px + ($caret-width);
-    }
+      left: -8px;
+      top: 13px + ($caret-width/2);
+      margin-left: 0;
+    } 
   }
 
   &.north {
+    margin-top: $caret-height * -2;
     &.is-visible {
-      margin-bottom: $caret-height;
+      margin-top: $caret-height * -1;
     }
     &:after {
       @include triangle('bottom', $caret-width, $caret-height, $background);
       bottom: $caret-height * -1;
       left: 50%;
-      margin-left: $caret-height * 0.5;
+      margin-left: $caret-width * -0.5;
     }    
   }
 
