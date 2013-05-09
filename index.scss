@@ -1,12 +1,12 @@
 // Tooltip
-// 
+//
 // Tips can be created using the JS component 'Tip'
 // or they can be placed static in the page. If they are
 // created with JS the position is handled via JS. If you
 // just want a static tooltip in the markup, as the class .is-static
 //
 // Position the tips caret by giving it one of these classes:
-// 
+//
 // * south
 // * east
 // * north
@@ -50,7 +50,7 @@
       opacity: 1;
     }
   }
-  
+
   .no-csstransitions & {
     display: none;
     &.is-visible {
@@ -61,6 +61,51 @@
   &:after {
     @include show-pseudo-element;
     position: absolute;
+  }
+
+  /**
+   * Light grey colour variation
+   */
+  &.tip--light {
+    @include transition(all 250ms ease-in);
+    background: darken($lighter-grey, 8%);
+    color: $grey;
+    &:hover {
+      background: darken($lighter-grey, 5%);
+    }
+    &.east:after {
+      @include transition(all 250ms ease-in);
+      border-right-color:  darken($lighter-grey, 8%);
+    }
+    &.east:hover:after {
+      border-right-color:  darken($lighter-grey, 5%);
+    }
+  }
+
+  /**
+   * Variation with larger type and a shadow
+   */
+  &.tip--large {
+    @extend .text-small;
+    font-weight: normal;
+    padding: spacing(2);
+    box-shadow: 0 0 10px 1px rgba(black, 0.3);
+    .tip__footer {
+      padding: spacing(2);
+      margin: spacing(-2);
+      margin-top: 0;
+    }
+  }
+
+  /**
+   * Add a footer style to the tooltip
+   */
+  .tip__footer {
+    background: $grey;
+    border-radius: 0 0 3px 3px;
+    margin: spacing(-1.5);
+    margin-top: 0;
+    padding: spacing(1.5);
   }
 
   &.south {
@@ -85,7 +130,7 @@
       left: -8px;
       top: 13px + ($caret-width/2);
       margin-left: 0;
-    } 
+    }
   }
 
   &.north {
@@ -98,7 +143,7 @@
       bottom: $caret-height * -1;
       left: 50%;
       margin-left: $caret-width * -0.5;
-    }    
+    }
   }
 
   &.east {
@@ -117,8 +162,9 @@
   }
 
   &.west {
+    margin-left: $caret-height * -2;
     &.is-visible {
-      margin-right: $caret-width;
+      margin-left: $caret-height * -1;
     }
     &:after {
       @include triangle('right', $caret-height, $caret-width, $background);
