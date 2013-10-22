@@ -1,0 +1,189 @@
+.tip {
+  transition: opacity,margin,transform;
+  transition-duration: .2s;
+  transition-timing-function: cubic-bezier(0.42,0,.58,1);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 10000;
+  color: #fff;
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 15px;
+  background: #333;
+  border-radius: 3px;
+  padding: 15px;
+}
+
+/**
+ * Caret on the tip
+ */
+.tip:after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-style: solid;
+  border-color: transparent;
+  width: 0;
+  height: 0;
+}
+
+/**
+ * Cross-browser visiblity
+ * -------------------------------------------------
+ */
+
+.csstransitions .tip {
+  opacity: 0;
+  margin: 0;
+}
+.csstransitions .tip.is-visible {
+  opacity: 1;
+}
+.no-csstransitions .tip {
+  display: none;
+}
+.no-csstransitions .tip.is-visible {
+  display: block;
+}
+
+/**
+ * Modifiers
+ * -------------------------------------------------
+ */
+
+/**
+ * Light modifier
+ */
+.tip--light {
+  transition: all 250ms ease-in;
+  background: #dadada;
+  color: #666;
+}
+.tip--light:hover {
+  background: #e1e1e1;
+}
+.tip--light.east:after {
+  transition: all 250ms ease-in;
+  border-right-color: #dadada;
+}
+.tip--light.east:hover:after {
+  border-right-color: #e1e1e1;
+}
+
+/**
+ * Large modifier
+ */
+.tip--large {
+  font-size:12px;
+  line-height:18px;
+  font-weight: 400;
+  padding: 20px;
+  box-shadow: 0 0 10px 1px rgba(0,0,0,.3);
+}
+.tip--large .tip__footer {
+  padding: 20px;
+  margin: -20px;
+  margin-top: 0;
+}
+
+/**
+ * Elements
+ * -------------------------------------------------
+ */
+
+.tip__footer {
+  background: #666;
+  border-radius: 0 0 3px 3px;
+  margin: -15px;
+  margin-top: 0;
+  padding: 15px;
+}
+
+/**
+ * Positions
+ * -------------------------------------------------
+ */
+
+/**
+ * South
+ */
+.tip.south.is-visible {
+  margin-top: 8px;
+}
+.tip.south:after {
+  border-width: 0 8px 8px;
+  border-bottom-color: #333;
+  top: -8px;
+  left: 50%;
+  margin-left: -4px;
+}
+
+/**
+ * North East
+ */
+.tip.north.east {
+  margin-top: -8px;
+}
+.tip.north.east.is-visible {
+  margin-top: -8px;
+}
+.tip.north.east:after {
+  border-width: 8px 8px 8px 0;
+  border-right-color: #333;
+  left: -8px;
+  top: 21px;
+  margin-left: 0;
+}
+
+/**
+ * North
+ */
+.tip.north {
+  margin-top: -16px;
+}
+.tip.north.is-visible {
+  margin-top: -8px;
+}
+.tip.north:after {
+  border-width: 8px 8px 0;
+  border-top-color: #333;
+  bottom: -8px;
+  left: 50%;
+  margin-left: -8px;
+}
+
+/**
+ * East
+ */
+.tip.east {
+  margin-left: 16px;
+}
+.tip.east.is-visible {
+  margin-left: 8px;
+}
+.tip.east:after {
+  border-width: 8px 8px 8px 0;
+  border-right-color: #333;
+  left: -8px;
+  top: 50%;
+  margin-top: -8px;
+}
+
+/**
+ * West
+ */
+.tip.west {
+  margin-left: -16px;
+}
+.tip.west.is-visible {
+  margin-left: -8px;
+}
+.tip.west:after {
+  border-width: 8px 0 8px 8px;
+  border-left-color: #333;
+  right: -8px;
+  top: 50%;
+  margin-top: -8px;
+}
