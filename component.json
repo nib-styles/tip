@@ -1,5 +1,5 @@
 {
   "name": "tip",
   "version": "0.2.0",
-  "files": ["index.css"]
+  "styles": ["index.css"]
 }
