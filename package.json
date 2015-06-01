@@ -1,0 +1,9 @@
+{
+  "name": "@nib-styles/tip",
+  "version": "0.2.0",
+  "main.css": "index.css",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:nib-styles/tip.git"
+  }
+}
